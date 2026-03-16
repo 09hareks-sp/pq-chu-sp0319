@@ -11,7 +11,7 @@ class Polynomial():
         ##This should do a lot of coolified things to make this prettier, like
         # - Don't print coeffecients if they're 1
         # - Don't print term if coeffecient is 0
-        # - Dynamically change sign
+        # - Dynamically change sign (also including not printing leading +)
         for coeffecient, exponent in zip(reversed(self.coefficients), range(self.degree,-1,-1)):
             return_string += f"{coeffecient} * x^{exponent} + "
         return return_string
@@ -33,15 +33,29 @@ class Poly2(Polynomial):
     def a(self):
         return self.coefficients[2]
     
+    @a.setter
+    def a(self, to_value: float):
+        self.coefficients[2] = to_value
+    
     @property
     def b(self):
         return self.coefficients[1]
+    
+    @b.setter
+    def b(self, to_value: float):
+        self.coefficients[1] = to_value
     
     @property
     def c(self):
         return self.coefficients[0]
     
+    @c.setter
+    def c(self, to_value: float):
+        self.coefficients[0] = to_value
+    
 
 my_poly = Poly2(1,5,-2)
 print(my_poly)
-print(my_poly.a)
+
+my_poly.b=-2
+print(my_poly)
