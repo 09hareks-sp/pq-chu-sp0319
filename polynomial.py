@@ -41,7 +41,7 @@ class Polynomial():
         return Polynomial(coefficients=new_coefficients, degree=higher.degree)
     
     def scalar_mult(self, multiplier):
-        self.coefficients *= multiplier
+        self.coefficients = [coeffecient * multiplier for coeffecient in self.coefficients]
 
 class Poly2(Polynomial):
     def __init__(self,a=1,b=2,c=3):
@@ -79,4 +79,5 @@ my_poly = Poly2(1,5,-2)
 print(my_poly)
 
 my_poly.b=-2
-print(my_poly)
+my_poly.scalar_mult(10)
+print(my_poly.coefficients)
