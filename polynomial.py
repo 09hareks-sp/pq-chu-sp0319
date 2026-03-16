@@ -79,13 +79,16 @@ class Poly2(Polynomial):
 
     
     
+def test_cases():
+    my_poly = Poly2(1,5,-2)
+    print(my_poly)
 
-my_poly = Poly2(1,5,-2)
-print(my_poly)
+    my_poly.b=-2
+    my_poly = my_poly.scalar_mult(10)
 
-my_poly.b=-2
-my_poly = my_poly.scalar_mult(10)
+    my_second_poly = Poly2(2,1,4)
+    print(my_poly+my_second_poly)
+    print(my_poly-my_second_poly)
 
-my_second_poly = Poly2(2,1,4)
-print(my_poly+my_second_poly)
-print(my_poly-my_second_poly)
+if __name__ == '__main__':
+    test_cases()
