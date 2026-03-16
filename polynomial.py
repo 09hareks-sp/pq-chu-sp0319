@@ -1,3 +1,4 @@
+from __future__ import annotations
 from dataclasses import dataclass
 
 @dataclass
@@ -40,6 +41,14 @@ class Polynomial():
             new_coefficients.append(higher.coefficients[i])
         return Polynomial(coefficients=new_coefficients, degree=higher.degree)
     
+    def __mul__(self, other:'Polynomial' | float | int):
+        if isinstance(other,Polynomial):
+            return self.poly_mult(other)
+        elif isinstance(other,float | int):
+            return self.scalar_mult(other)
+        else:
+            raise ValueError
+
     def scalar_mult(self, multiplier):
         new_coefficients = [coeffecient * multiplier for coeffecient in self.coefficients]
         return Polynomial(coefficients=new_coefficients, degree=self.degree)
@@ -96,7 +105,11 @@ def test_cases():
     base_poly = Poly2(1,1,1)
     print(my_poly+my_second_poly)
     print(my_poly-my_second_poly)
-    print(base_poly.poly_mult(base_poly))
+    print(base_poly*base_poly)
+    print(base_poly*5)
+    print(base_poly*2.3)
+    print("Time for error")
+    print(base_poly*'Fel')
 
 if __name__ == '__main__':
     test_cases()
