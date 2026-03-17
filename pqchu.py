@@ -53,14 +53,17 @@ class PQApp(tk.Frame):
         self.quit_button = tk.Button(self, text='Exit', command=self.quit)
         self.quit_button.grid(column=0, row=2, sticky=(W,S))
 
+        
+        self.answertext = tk.StringVar()
+        self.answer_label = tk.Label(mainframe, textvariable=self.answertext).grid(column=2,row=2, columnspan=7)
+        self.answertext.set("Enter equation an press solve")
+        
         self.solve_button = tk.Button(self, text='Solve', command=self.solve)
         self.solve_button.grid(column=1, row=2 )
 
     def solve(self):
-        print("DEBUG: The solve button was pressed")
         left_poly, right_poly = self.read_fields()
-        solveable_poly = left_poly-right_poly
-        print(self.l_a.get(), " - ",self.l_b.get() , " - ",self.l_c.get() , " - ",self.r_a.get(), " - ",self.r_b.get(), " - ",self.r_c.get())
+        self.answertext.set("The Solve button was pressed.")
 
     def read_fields(self)-> tuple[Poly2, Poly2]:
         left_poly = Poly2(a=self.left_a_entry.get(), b=self.left_b_entry.get(), c=self.left_c_entry.get())      
