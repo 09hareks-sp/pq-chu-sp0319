@@ -69,6 +69,12 @@ class PQApp(tk.Frame):
         left_poly, right_poly = self.read_fields()
         self.answertext.set("The Solve button was pressed.")
 
-app = PQApp()
-app.master.title('PQ-chu')
-app.mainloop()
+        ##NEEDS CODE TO SOLVE EQUATION HERE. CAN YOU DO IT?
+
+def main():
+    app = PQApp()
+    app.master.title('PQ-chu')
+    app.mainloop()
+
+if __name__=='__main__':
+    main()
