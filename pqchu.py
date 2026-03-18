@@ -14,6 +14,7 @@ class PQApp(tk.Frame):
         self.r_a:tk.StringVar = tk.StringVar()
         self.r_b:tk.StringVar = tk.StringVar()
         self.r_c:tk.StringVar = tk.StringVar()
+        self.answertext = tk.StringVar()
         
         self.init_widgets()
         self.grid()
@@ -53,22 +54,20 @@ class PQApp(tk.Frame):
         self.quit_button = tk.Button(self, text='Exit', command=self.quit)
         self.quit_button.grid(column=0, row=2, sticky=(W,S))
 
-        
-        self.answertext = tk.StringVar()
         self.answer_label = tk.Label(mainframe, textvariable=self.answertext).grid(column=2,row=2, columnspan=7)
         self.answertext.set("Enter equation an press solve")
         
         self.solve_button = tk.Button(self, text='Solve', command=self.solve)
         self.solve_button.grid(column=1, row=2 )
 
-    def solve(self):
-        left_poly, right_poly = self.read_fields()
-        self.answertext.set("The Solve button was pressed.")
-
     def read_fields(self)-> tuple[Poly2, Poly2]:
         left_poly = Poly2(a=self.left_a_entry.get(), b=self.left_b_entry.get(), c=self.left_c_entry.get())      
         right_poly = Poly2(a=self.right_a_entry.get(), b=self.right_b_entry.get(), c=self.right_c_entry.get())
         return (left_poly, right_poly)
+    
+    def solve(self):
+        left_poly, right_poly = self.read_fields()
+        self.answertext.set("The Solve button was pressed.")
 
 app = PQApp()
 app.master.title('PQ-chu')

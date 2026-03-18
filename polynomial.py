@@ -123,6 +123,7 @@ def test_cases():
     print(base_poly*5)
     print(base_poly*2.3)
     print("Time for error")
+    input("Press enter to continue, tests should cause a value error")
     print(base_poly*'Fel')
 
 if __name__ == '__main__':
