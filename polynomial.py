@@ -43,18 +43,18 @@ class Polynomial():
     
     def __mul__(self, other:'Polynomial' | float | int):
         if isinstance(other,Polynomial):
-            return self.poly_mult(other)
+            return self._poly_mult(other)
         elif isinstance(other,float | int):
-            return self.scalar_mult(other)
+            return self._scalar_mult(other)
         else:
             raise ValueError
 
-    def scalar_mult(self, multiplier):
+    def _scalar_mult(self, multiplier):
         ## Helper function for __mul__ implementation
         new_coefficients = [coeffecient * multiplier for coeffecient in self.coefficients]
         return Polynomial(coefficients=new_coefficients, degree=self.degree)
     
-    def poly_mult(self, other:'Polynomial')-> 'Polynomial':
+    def _poly_mult(self, other:'Polynomial')-> 'Polynomial':
         ## Helper function for __mul__ implementation
         new_degree = self.degree + other.degree
         new_coefficients = [0]*(new_degree+1)
@@ -68,7 +68,7 @@ class Polynomial():
         return self + (-other)
     
     def __neg__(self) -> Polynomial:
-        return self.scalar_mult(-1)
+        return self._scalar_mult(-1)
     
 class Poly2(Polynomial):
     def __init__(self,a:float | int=1,b:float | int=2,c:float | int=3):
@@ -121,7 +121,7 @@ def test_cases():
     print(my_poly)
 
     my_poly.b=-2
-    my_poly = my_poly.scalar_mult(10)
+    my_poly = my_poly._scalar_mult(10)
 
     my_second_poly = Poly2(2,1,4)
     base_poly = Poly2(1,1,1)
