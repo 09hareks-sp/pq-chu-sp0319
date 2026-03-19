@@ -112,6 +112,9 @@ class Poly2(Polynomial):
     
     def __sub__(self, other:'Poly2') -> 'Poly2':
         return self + (-other)
+
+    def __mul__(self, factor: int | float) -> Poly2:
+        return self.scale(factor)
     
 def test_cases():
     print("A few print statements for testing purposes")
