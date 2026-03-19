@@ -113,8 +113,6 @@ class Poly2(Polynomial):
     def __sub__(self, other:'Poly2') -> 'Poly2':
         return self + (-other)
     
-
-
 def test_cases():
     print("A few print statements for testing purposes")
     my_poly = Poly2(1,5,-2)
