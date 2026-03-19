@@ -67,13 +67,23 @@ class PQApp(tk.Frame):
     
     def solve(self):
         left_poly, right_poly = self.read_fields()
+        if left_poly.a == 0:
+            self.answertext.set(str("no polynomial"))
+            return
+        
         left_poly = left_poly - right_poly
         right_poly = 0
         left_poly = left_poly * left_poly.a**-1
-        x1 = -left_poly.b / 2 + (left_poly.b/2 **2 - left_poly.c)**0.5
-        x2 = -left_poly.b / 2 - (left_poly.b/2 **2 - left_poly.c)**0.5
+        x1 = -left_poly.b / 2 + ((left_poly.b/2) **2 - left_poly.c)**0.5
+        x2 = -left_poly.b / 2 - ((left_poly.b/2) **2 - left_poly.c)**0.5
         
-        self.answertext.set(str(x1,x2))
+        if (left_poly.b/2) **2 < left_poly.c:
+            self.answertext.set(str("does not intersect y=0"))
+        elif x1 == x2:
+            self.answertext.set(str(f"x={x1}"))
+        elif x1 != x2:
+            self.answertext.set(str(f"x1={x1} , x2={x2}"))
+       
 
         ##NEEDS CODE TO SOLVE EQUATION HERE. CAN YOU DO IT?
 
